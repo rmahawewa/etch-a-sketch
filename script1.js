@@ -1,8 +1,11 @@
-var body = document.querySelector("body");
-body.setAttribute("style", "display: flex; align-items: top; justify-content: space-evenly; font-family: arial helvetica sans-serif;");
+var h1 = document.querySelector("h1");
+h1.setAttribute("style", "color:red; text-align:center; font-family: arial helvetica sans-serif; border: 50px;");
+
+var body = document.querySelector(".body");
+body.setAttribute("style", "display: flex; justify-content: space-evenly; font-family: arial helvetica sans-serif;");
 
 var container0 = document.querySelector(".container0");
-container0.setAttribute("style", "display: flex; flex-direction: column; align-items: center; justify-content: center");
+container0.setAttribute("style", "display: flex; flex-direction: column;");
 
 var reset = document.querySelector("#reset_btn");
 reset.setAttribute("style", "background: orange; color: black; font-weight: bold; padding: 10px; border: 4px solid black");
@@ -138,14 +141,13 @@ function pick_color(e) {
 
 type_btn.addEventListener("click", () => {
     console.log(type_btn.innerHTML);
+    pd_count = 0;
     let current_status = type_btn.innerHTML;
     if (current_status === "Progressive darkning: OFF") {
-        console.log("12345");
         current_status = "Progressive darkning: ON";
         pen_type = "pd";
     }
     else if (current_status === "Progressive darkning: ON") {
-        console.log("678910");
         current_status = "Progressive darkning: OFF";
         pen_type = "solid";
     }
