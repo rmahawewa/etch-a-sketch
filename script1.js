@@ -89,19 +89,19 @@ function handler(e) {
             node.style.background = getMulticolor();
             pd_count = 0;
         }
-        if (pen_color === 'black') {
+        if (pen_color === 'brown') {
             if (pen_type === "solid") {
-                node.style.background = "black";
+                node.style.background = "brown";
                 pd_count = 0;
             }
             if (pen_type === "pd" && pd_count < 11) {
                 let opacity_amount = pd_count * 10;
                 let opacity = opacity_amount + "%";
-                node.style.background = "black";
+                node.style.background = "brown";
                 node.style.opacity = opacity;
                 pd_count++;
             } else {
-                node.style.background = "black";
+                node.style.background = "brown";
             }
         }
     }
@@ -125,8 +125,8 @@ function pick_color(e) {
         pen_color = e.target.id;
         console.log(pen_color);
     }
-    if (pen_color === 'black') {
-        color_btn.innerHTML = "Pen Color: Black";
+    if (pen_color === 'brown') {
+        color_btn.innerHTML = "Pen Color: Brown";
         type_btn.innerHTML = "Progressive darkning: OFF";
         type_btn.style.visibility = "visible";
     }
