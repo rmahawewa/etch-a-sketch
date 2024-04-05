@@ -14,7 +14,7 @@ var container = document.querySelector(".container");
 container.setAttribute("style", "width: 960px; height: 960px; display: flex; flex-direction: column; border: none;");
 
 var container1 = document.querySelector(".container1");
-container1.setAttribute("style", "display: flex; flex-direction: column; gap: 50px; margin-top: 50px;");
+container1.setAttribute("style", "display: flex; flex-direction: column; gap: 50px; margin-top: 50px; visibility: hidden;");
 
 var dropdown_content = document.querySelector("#dropdown_content");
 dropdown_content.setAttribute("style", "display: flex; flex-direction: column; visibility: hidden; ");
@@ -75,7 +75,8 @@ reset.addEventListener("click", () => {
     }
 
     pd_count = 0;
-
+    reset.innerHTML = "Reset";
+    container1.style.visibility = "visible";
 });
 
 container.addEventListener("mouseover", handler, false);
