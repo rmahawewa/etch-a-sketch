@@ -34,6 +34,47 @@ var pen_type = "solid";
 
 var pd_count = Number(0);
 
+//var g_colors = gradient_colors();
+var g_colors = [];
+var g_colors_arr_length = g_colors.length;
+var gradient_count_l = 0;
+var gradient_count_m = 0;
+var color;
+var sw = 1;
+
+function gradient() {
+
+    const color_arr_asc = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+    const color_arr_desc = ["f", "e", "d", "c", "b", "a", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
+
+    let m = gradient_count_m % 16;
+    if (gradient_count_m > 0 && m === 0) {
+        gradient_count_l++;
+    }
+    if (gradient_count_l > 0 && gradient_count_l % 16 === 0) {
+        sw++;
+    }
+
+    if (sw % 2 === 1) {
+        let l = gradient_count_l % 16;
+
+        let charctr1 = color_arr_desc[l];
+        let charctr2 = color_arr_desc[m];
+
+        color = "#" + charctr1 + charctr2 + "ff00";
+    } else if (sw % 2 === 0) {
+        let r = gradient_count_l % 16;
+
+        let charctr1 = color_arr_asc[r];
+        let charctr2 = color_arr_asc[m];
+
+        color = "#00ff" + charctr1 + charctr2;
+    }
+
+    gradient_count_m++;
+    return color;
+}
+
 
 reset.addEventListener("click", () => {
     // const test1 = Number("12.5");
@@ -105,6 +146,11 @@ function handler(e) {
                 node.style.background = "brown";
             }
         }
+        if (pen_color === 'gradient') {
+            let color = gradient();
+            node.style.background = color;
+        }
+
     }
 }
 
@@ -133,6 +179,10 @@ function pick_color(e) {
     }
     if (pen_color === 'multicolor') {
         color_btn.innerHTML = "Pen Color: Multicolor";
+        type_btn.style.visibility = "hidden";
+    }
+    if (pen_color === 'gradient') {
+        color_btn.innerHTML = "Pen Color: Gradient";
         type_btn.style.visibility = "hidden";
     }
     pen_type = "solid";
@@ -175,3 +225,4 @@ function getRandNumber() {
     const random = Math.round(rand * difference);
     return random;
 }
+
