@@ -41,8 +41,11 @@ var gradient_count_l = 0;
 var gradient_count_m = 0;
 var color;
 var sw = 1;
+var count = 0;
 
 function gradient() {
+
+    // console.log(sw);
 
     const color_arr_asc = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
     const color_arr_desc = ["f", "e", "d", "c", "b", "a", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
@@ -51,8 +54,9 @@ function gradient() {
     if (gradient_count_m > 0 && m === 0) {
         gradient_count_l++;
     }
-    if (gradient_count_l > 0 && gradient_count_l % 16 === 0) {
+    if (gradient_count_l > 0 && gradient_count_l % 16 === 0 && count == 0) {
         sw++;
+        count++;
     }
 
     if (sw % 2 === 1) {
@@ -62,8 +66,15 @@ function gradient() {
         let charctr2 = color_arr_desc[m];
 
         color = "#" + charctr1 + charctr2 + "ff00";
+        
     } else if (sw % 2 === 0) {
         let r = gradient_count_l % 16;
+        if(m == 15 && r == 15){
+            gradient_count_l = 0;
+            gradient_count_m = 0;
+            sw = 1;
+            count = 0;
+        }
 
         let charctr1 = color_arr_asc[r];
         let charctr2 = color_arr_asc[m];
